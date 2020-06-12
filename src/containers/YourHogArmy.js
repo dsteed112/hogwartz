@@ -1,20 +1,24 @@
-import React, { Component } from "react"
+import React from "react";
+import HogCard from "../components/HogCard.js";
 
-class YourHogArmy extends Component {
-    //your bot army code here...
 
-    render() {
-        return (
-            <div className="ui segment inverted olive hog-army">
-                <div className="ui five column grid">
-                    <div className="row hog-army-row">
-                        {/*...and here...*/}
-                        Your Hog Army
-                    </div>
+function YourHogArmy (props){
+
+    const displayHogCards = props.hogArmy.map(hog => {
+        return <HogCard hog={hog} action={props.action} removeHog={props.removeHogForever}/>
+    })
+
+
+    return (
+        <div className="ui segment inverted olive hog-army">
+            <div className="ui five column grid">
+                <div className="row hog-army-row">
+                    {displayHogCards}
                 </div>
             </div>
-        )
-    }
+        </div>
+    )
 }
+
 
 export default YourHogArmy

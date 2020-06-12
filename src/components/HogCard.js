@@ -11,13 +11,26 @@ const botTypeClasses = {
     Captain: "icon star"
 }
 
-const HogCard = props => {
+function HogCard(props) {
+    const { hog, action, removeHog } = props
+    // when we use "hog" we are referring to hog inside of props
+    
+
+function handleClick() {
+    action(hog)
+}
+
+function removeCard(e) {
+    e.stopPropagation()
+    removeHog(hog)
+}
+
     return (
         <div className="ui column">
             <div
                 className="ui card"
                 key={props.hog.id}
-                onClick={() => console.log("add code to connect event listener")}
+                onClick={handleClick}
             >
                 <div className="image">
                     <img alt="oh no!" src={props.hog.image} />
@@ -43,9 +56,9 @@ const HogCard = props => {
                         <div className="ui center aligned segment basic">
                             <button
                                 className="ui mini red button"
-                                onClick={() =>
-                                    console.log("add code to connect event listener")
-                                }
+                                onClick={removeCard}
+                                    
+                            
                             >
                                 x
               </button>
@@ -57,4 +70,4 @@ const HogCard = props => {
     )
 }
 
-export default BotCard
+export default HogCard
